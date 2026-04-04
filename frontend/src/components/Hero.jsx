@@ -12,11 +12,11 @@ const Hero = () => {
   }, [images.length]);
 
   return (
-    <section id="home" style={{ 
-      height: '100vh', 
+    <section id="home" style={{
+      height: '100vh',
       minHeight: '850px',
-      position: 'relative', 
-      display: 'flex', 
+      position: 'relative',
+      display: 'flex',
       alignItems: 'center',
       overflow: 'hidden',
       padding: 'var(--header-height) 0 80px',
@@ -25,7 +25,7 @@ const Hero = () => {
         position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1
       }}>
         {images.map((img, idx) => (
-          <div 
+          <div
             key={idx}
             style={{
               position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
@@ -45,18 +45,9 @@ const Hero = () => {
       <div className="container">
         <div style={{ maxWidth: '900px', textAlign: 'center', margin: '0 auto' }}>
           <div>
-            <div style={{ 
-               display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', 
-               fontSize: '10px', fontWeight: '800', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '30px',
-               background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '50px'
-            }} className="hero-label">
-               <div style={{ width: '24px', height: '2.5px', background: 'var(--primary)', borderRadius: '2px' }} />
-               MAHWA FONDATION | SÉNÉGAL
-            </div>
-
-            <h1 style={{ 
-              fontSize: 'clamp(2.5rem, 9vw, 6rem)', 
-              color: 'white', 
+            <h1 style={{
+              fontSize: 'clamp(2.5rem, 9vw, 6rem)',
+              color: 'white',
               lineHeight: '1.05',
               marginBottom: '35px',
               fontWeight: '900',
@@ -66,7 +57,7 @@ const Hero = () => {
               Partagez <span style={{ color: 'var(--secondary)' }}>l'Espérance</span>
             </h1>
 
-            <p style={{ 
+            <p style={{
               fontSize: '1.25rem', color: 'rgba(255,255,255,0.85)', marginBottom: '50px',
               maxWidth: '750px', margin: '0 auto 50px', lineHeight: '1.7'
             }} className="hero-para">
@@ -74,14 +65,14 @@ const Hero = () => {
             </p>
 
             <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }} className="hero-btns">
-              <a href="#about" className="btn-prestige-red" style={{ 
-                 background: 'var(--secondary)', color: 'white', padding: '20px 45px', 
-                 borderRadius: '50px', textDecoration: 'none', fontWeight: '800', fontSize: '13px'
+              <a href="#about" className="btn-prestige-red" style={{
+                background: 'var(--secondary)', color: 'white', padding: '20px 45px',
+                borderRadius: '50px', textDecoration: 'none', fontWeight: '800', fontSize: '13px'
               }}>
                 NOTRE MISSION →
               </a>
-              
-              <a href="#contact" style={{ 
+
+              <a href="#contact" style={{
                 padding: '18px 45px', fontSize: '13px', fontWeight: '800', borderRadius: '50px',
                 textDecoration: 'none', border: '2.5px solid white', color: 'white',
                 transition: 'all 0.3s', letterSpacing: '1px'
@@ -92,8 +83,9 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
-      <style dangerouslySetInnerHTML={{ __html: `
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes subtleZoom { from { transform: scale(1.1); } to { transform: scale(1.2); } }
         .btn-hero-outline:hover { background: white; color: var(--text); transform: translateY(-4px); }
         
