@@ -1,77 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --primary: #1b4332;      /* Vert Impérial profond */
-  --primary-light: #2d6a4f;
-  --secondary: #c94c4c;    /* Rouge discret */
-  --accent: #d4af37;       /* Or Véritable pour le prestige */
-  --bg: #ffffff;
-  --bg-soft: #fcfcfc;
-  --surface: rgba(255, 255, 255, 0.8);
-  --text: #081c15;         /* Presque noir pour la lisibilité */
-  --text-light: #52665b;
-  --border: rgba(0, 0, 0, 0.05);
-  --shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  --primary: #2A7A4B;      /* Vert Espoir */
+  --secondary: #D72638;   /* Rouge Passion */
+  --accent: #D72638;
+  --bg: #F8F6F2;           /* Fond Crème */
+  --bg-soft: #FFFFFF;
+  --text: #1A1A1A;         /* Anthracite Profond */
+  --text-light: #6B7280;   /* Gris Moyen */
+  --white: #FFFFFF;
+  --border: #E5E7EB;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   --header-height: 100px;
 }
 
-html, body {
-  overflow-x: hidden; /* Empêche le décalage à droite */
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  color: var(--text);
-  line-height: 1.7;
-  background: var(--bg);
-  cursor: default;
-}
-
-h1, h2, h3, h4 {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.75;
   overflow-x: hidden;
 }
 
-h1, h2, h3, .brand {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
 }
 
 .container {
@@ -80,104 +41,35 @@ img {
   padding: 0 20px;
 }
 
-section {
-  padding: 100px 0;
+.transition-all {
+  transition: all 0.3s ease;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-title h2 {
-  font-size: 2.5rem;
-  color: var(--primary);
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-}
-
-.section-title h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--secondary);
-  border-radius: 2px;
-}
-
-.btn {
+/* Utilitaires de Boutons (Style demandé) */
+.btn-prestige-red {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 28px;
+  background: var(--secondary);
+  color: var(--white);
+  padding: 16px 32px;
   border-radius: 50px;
   font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(215, 38, 56, 0.35);
+  transition: all 0.3s ease;
 }
 
-.btn-primary {
-  background: var(--primary);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: var(--primary-light);
+.btn-prestige-red:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(27, 94, 32, 0.2);
+  box-shadow: 0 8px 28px rgba(215, 38, 56, 0.45);
+  filter: brightness(1.1);
 }
 
-.btn-secondary {
-  background: var(--secondary);
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: #b71c1c;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2);
-}
-
-.btn-outline {
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  background: transparent;
-}
-
-.btn-outline:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-3px);
-}
-
-/* Glassmorphism utility */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-/* Animations helper */
-.hover-scale {
-  transition: transform 0.3s ease;
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 60px 0;
-  }
-  
-  .section-title h2 {
-    font-size: 2rem;
-  }
+section {
+  position: relative;
+  z-index: 1;
 }

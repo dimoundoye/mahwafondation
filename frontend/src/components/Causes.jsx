@@ -27,66 +27,73 @@ const Causes = () => {
       raised: "120 000 FCFA",
       goal: "300 000 FCFA",
       percent: 40,
-      color: "var(--accent)"
+      color: "var(--primary)"
     }
   ];
 
   return (
-    <section id="actions" style={{ padding: '120px 0', background: 'var(--bg-soft)' }}>
+    <section id="actions" style={{ padding: '120px 0', background: 'var(--bg)' }}>
       <div className="container">
-        <div className="section-title" style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <span style={{ color: 'var(--primary)', fontWeight: '700', letterSpacing: '4px' }}>NOS CAUSES</span>
-          <h2 style={{ fontSize: '3rem', marginTop: '15px' }}>Engagez-vous à Nos Côtés</h2>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div style={{ 
+               display: 'inline-flex', alignItems: 'center', gap: '12px', color: 'var(--primary)', 
+               fontSize: '11px', fontWeight: '700', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '25px'
+          }}>
+             <div style={{ width: '28px', height: '2.5px', background: 'var(--primary)', borderRadius: '2px' }} />
+             NOS CAUSES
+          </div>
+          <h2 style={{ fontSize: '3.5rem', marginTop: '10px' }}>Engagement Solidaire</h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
           {causes.map((c, i) => (
             <div 
               key={i} 
               style={{ 
                 background: 'white', 
-                borderRadius: '20px', 
+                borderRadius: '0', 
                 overflow: 'hidden', 
                 boxShadow: 'var(--shadow)',
-                transition: 'transform 0.3s ease'
+                transition: 'transform 0.4s ease',
+                border: '1px solid var(--border)'
               }}
               className="cause-card"
             >
               <div style={{ 
-                height: '220px', 
+                height: '240px', 
                 background: i === 0 ? 'url(/hero.png)' : i === 1 ? 'url(/action_march.png)' : 'url(/group.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }} />
               
-              <div style={{ padding: '30px' }}>
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: c.color, marginBottom: '15px' }}>
+              <div style={{ padding: '40px' }}>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: c.color, marginBottom: '20px' }}>
                     {c.icon}
-                    <h3 style={{ fontSize: '1.4rem', margin: 0 }}>{c.title}</h3>
+                    <h3 style={{ fontSize: '1.6rem', color: 'var(--text)', margin: 0 }}>{c.title}</h3>
                  </div>
-                 <p style={{ color: 'var(--text-light)', fontSize: '0.95rem', marginBottom: '25px', lineHeight: '1.7' }}>
+                 <p style={{ color: 'var(--text-light)', fontSize: '1rem', marginBottom: '30px', lineHeight: '1.8' }}>
                     {c.desc}
                  </p>
 
-                 {/* Progress Bar (Comme Charius) */}
-                 <div style={{ marginBottom: '25px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '700' }}>
-                       <span>Objectif atteint:</span>
+                 {/* Progress Bar styled like Charity Style */}
+                 <div style={{ marginBottom: '30px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '10px', fontWeight: '700', letterSpacing: '1px' }}>
+                       <span style={{ color: 'var(--text-light)', textTransform: 'uppercase' }}>ATTEINT:</span>
                        <span style={{ color: c.color }}>{c.percent}%</span>
                     </div>
-                    <div style={{ height: '8px', background: '#eee', borderRadius: '10px', overflow: 'hidden' }}>
-                       <div style={{ width: `${c.percent}%`, height: '100%', background: c.color, borderRadius: '10px' }} />
+                    <div style={{ height: '8px', background: '#F0F0F0', borderRadius: '50px', overflow: 'hidden' }}>
+                       <div style={{ width: `${c.percent}%`, height: '100%', background: c.color, transition: 'width 1s ease' }} />
                     </div>
                  </div>
 
-                 <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #eee', paddingTop: '20px' }}>
+                 <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1.5px dashed var(--border)', paddingTop: '25px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                       <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>Collecté</span>
-                       <span style={{ fontWeight: '800', color: c.color }}>{c.raised}</span>
+                       <span style={{ fontSize: '10px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Collecté</span>
+                       <span style={{ fontWeight: '900', fontSize: '1.2rem', fontFamily: 'Playfair Display', color: 'var(--text)' }}>{c.raised}</span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}>
-                       <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>Objectif</span>
-                       <span style={{ fontWeight: '800' }}>{c.goal}</span>
+                       <span style={{ fontSize: '10px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Objectif</span>
+                       <span style={{ fontWeight: '900', fontSize: '1.2rem', fontFamily: 'Playfair Display', color: 'var(--text)' }}>{c.goal}</span>
                     </div>
                  </div>
               </div>
@@ -96,7 +103,7 @@ const Causes = () => {
       </div>
       
       <style dangerouslySetInnerHTML={{ __html: `
-        .cause-card:hover { transform: translateY(-10px); }
+        .cause-card:hover { transform: translateY(-12px); box-shadow: 0 40px 80px rgba(0,0,0,0.1); }
       `}} />
     </section>
   );

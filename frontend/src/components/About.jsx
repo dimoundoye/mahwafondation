@@ -1,140 +1,185 @@
 import React from 'react';
 
 const About = () => {
-  const splitImage = "/group.png";
-
   return (
-    <section id="about" style={{ padding: '160px 0', background: 'var(--bg)', overflow: 'hidden', position: 'relative' }}>
-      <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '100px', alignItems: 'center' }}>
+    <section id="about" className="hero-about" style={{ 
+      position: 'relative', 
+      width: '100%', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      overflow: 'hidden',
+      padding: '120px 0',
+      background: 'var(--bg)'
+    }}>
+      
+      {/* BACKGROUND DECORATION MAP */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.08 }}>
+        <svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="200" cy="260" rx="160" ry="200" fill="var(--primary)"/>
+          <ellipse cx="380" cy="200" rx="80"  ry="120" fill="var(--primary)"/>
+          <ellipse cx="580" cy="240" rx="180" ry="170" fill="var(--primary)"/>
+          <ellipse cx="840" cy="220" rx="200" ry="150" fill="var(--primary)"/>
+          <ellipse cx="1060" cy="240" rx="100" ry="130" fill="var(--primary)"/>
+          <ellipse cx="300" cy="380" rx="120" ry="80"  fill="var(--primary)"/>
+        </svg>
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
+          gap: '80px', 
+          alignItems: 'center' 
+        }}>
           
-          {/* LE SPLIT MASK EFFECT (CORRIGÉ & SHARP) */}
-          <div className="split-mask-container" style={{ 
+          {/* LEFT — IMAGE CLUSTER (Style demandé) */}
+          <div className="image-cluster" style={{ 
             position: 'relative', 
-            height: '650px', 
-            display: 'flex', 
-            gap: '4px', // ESPACE ULTRA-FIN À 4px
-            alignItems: 'center',
-            transform: 'rotate(-5deg)',
-            zIndex: 2
+            width: '100%', 
+            aspectRatio: '1/1', 
+            maxWidth: '500px', 
+            margin: '0 auto' 
           }}>
-            {/* Fragment 1 (Gauche) - SHARP & SYNCED */}
-            <div style={{ 
-              flex: 1, 
-              height: '450px', 
-              borderRadius: '0', 
-              overflow: 'hidden',
-              boxShadow: 'var(--shadow)',
-              border: '4px solid white',
-              position: 'relative',
-              background: `url(${splitImage}) no-repeat`,
-              backgroundSize: '300% auto', // L'image est 3x plus large
-              backgroundPosition: '0% center', // Portion gauche
-              transform: 'rotate(5deg)' // On redresse
+            <div className="dot-grid tl" style={{ 
+              position: 'absolute', top: '-15px', left: '-15px', 
+              width: '130px', height: '130px', opacity: 0.35,
+              backgroundImage: 'radial-gradient(circle, var(--primary) 1.5px, transparent 1.5px)',
+              backgroundSize: '14px 14px'
+            }} />
+            <div className="dot-grid br" style={{ 
+              position: 'absolute', bottom: '-15px', right: '-15px', 
+              width: '130px', height: '130px', opacity: 0.2,
+              backgroundImage: 'radial-gradient(circle, var(--primary) 1.5px, transparent 1.5px)',
+              backgroundSize: '14px 14px'
             }} />
 
-            {/* Fragment 2 (Milieu) - SHARP & SYNCED */}
-            <div style={{ 
-              flex: 1.2, 
-              height: '620px', 
-              borderRadius: '0', 
-              overflow: 'hidden',
-              boxShadow: 'var(--shadow)',
-              border: '4px solid white',
-              marginTop: '-50px',
-              position: 'relative',
-              background: `url(${splitImage}) no-repeat`,
-              backgroundSize: '300% auto',
-              backgroundPosition: '50% center', // Portion milieu
-              transform: 'rotate(5deg)'
+            {/* Accent dots */}
+            <div className="acc r1" />
+            <div className="acc g1" />
+            <div className="acc outline" />
+
+            <div className="ring-about" style={{
+              position: 'absolute', top: '50%', left: '50%', 
+              transform: 'translate(-50%, -50%)', width: '75%', aspectRatio: '1',
+              borderRadius: '50%', border: '1.5px dashed var(--primary)', opacity: 0.3,
+              animation: 'spinAbout 30s linear infinite'
             }} />
 
-            {/* Fragment 3 (Droite) - SHARP & SYNCED */}
-            <div style={{ 
-              flex: 1, 
-              height: '520px', 
-              borderRadius: '0', 
-              overflow: 'hidden',
-              boxShadow: 'var(--shadow)',
-              border: '4px solid white',
-              marginTop: '100px',
-              position: 'relative',
-              background: `url(${splitImage}) no-repeat`,
-              backgroundSize: '300% auto',
-              backgroundPosition: '100% center', // Portion droite
-              transform: 'rotate(5deg)'
-            }} />
-          </div>
-
-          <div>
-            <span style={{ color: 'var(--accent)', fontWeight: '800', letterSpacing: '4px', display: 'block', marginBottom: '20px', fontSize: '0.9rem' }}>NOTRE HISTOIRE</span>
-            <h2 style={{ fontSize: '3.8rem', fontWeight: '800', lineHeight: '1.05', marginBottom: '35px', color: 'var(--primary)' }}>
-              Vous êtes l'Espoir <br />
-              <span style={{ color: 'var(--text-light)', fontWeight: '400', fontFamily: 'Inter' }}>D'un Meilleur Demain</span>
-            </h2>
-            <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--text-light)', marginBottom: '45px', fontStyle: 'italic' }}>
-              "La solidarité n'est pas un sentiment, c'est une action. À Mahwa, nous faisons de chaque don une réalité sur le terrain."
-            </p>
-            
-            <div style={{ display: 'grid', gap: '35px', marginBottom: '55px' }}>
-              <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                 <div style={{ background: 'rgba(212, 175, 55, 0.1)', padding: '15px', borderRadius: '12px', color: 'var(--accent)' }}>
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                 </div>
-                 <div>
-                    <h4 style={{ fontSize: '1.3rem', marginBottom: '10px' }}>Engagement des Jeunes</h4>
-                    <p style={{ fontSize: '1rem', opacity: 0.8, color: 'var(--text-light)' }}>Mobilisation active pour la distribution de Ndogou et le soutien social direct.</p>
-                 </div>
-              </div>
-              <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                 <div style={{ background: 'rgba(212, 175, 55, 0.1)', padding: '15px', borderRadius: '12px', color: 'var(--accent)' }}>
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16 10-4 4-2-2"/></svg>
-                 </div>
-                 <div>
-                    <h4 style={{ fontSize: '1.3rem', marginBottom: '10px' }}>Impact Durable</h4>
-                    <p style={{ fontSize: '1rem', opacity: 0.8, color: 'var(--text-light)' }}>Soutien alimentaire et aide humanitaire aux populations les plus vulnérables.</p>
-                 </div>
-              </div>
+            {/* Main Image */}
+            <div className="circle-main-about" style={{
+               position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+               width: '66%', aspectRatio: '1', borderRadius: '50%', overflow: 'hidden',
+               border: '6px solid white', boxShadow: '0 20px 60px rgba(0,0,0,0.15)'
+            }}>
+               <img src="/group.png" alt="Mahwa Group" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+               <div style={{
+                  position: 'absolute', top: '20px', right: '20px', width: '80px', height: '80px',
+                  background: 'var(--secondary)', borderRadius: '50%', display: 'flex', flexDirection: 'column',
+                  alignItems: 'center', justifyContent: 'center', color: 'white', fontFamily: 'Playfair Display',
+                  boxShadow: '0 5px 15px rgba(215, 38, 56, 0.4)'
+               }}>
+                  <span style={{ fontSize: '1.3rem', fontWeight: '900', lineHeight: 1 }}>03+</span>
+                  <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Années</span>
+               </div>
             </div>
 
-            <a href="#contact" className="btn-luxury-sm" style={{ 
-              padding: '18px 45px', 
-              borderRadius: '50px', 
-              background: 'var(--primary)', 
-              color: 'white', 
-              fontSize: '1rem', 
-              fontWeight: '700',
-              boxShadow: 'var(--shadow)',
-              textDecoration: 'none',
-              transition: 'all 0.3s'
-            }}>EN SAVOIR PLUS →</a>
+            {/* Small circular images */}
+            <div className="circle-sm pos-tr" style={{
+               position: 'absolute', top: '6%', right: '2%', width: '36%', aspectRatio: '1',
+               borderRadius: '50%', overflow: 'hidden', border: '5px solid var(--primary)', 
+               boxShadow: 'var(--shadow)'
+            }}>
+               <img src="/action_march.png" alt="Children" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+
+            <div className="circle-sm pos-bl" style={{
+               position: 'absolute', bottom: '8%', left: '4%', width: '30%', aspectRatio: '1',
+               borderRadius: '50%', overflow: 'hidden', border: '5px solid var(--secondary)', 
+               boxShadow: 'var(--shadow)'
+            }}>
+               <img src="/hero.png" alt="Mahwa Action" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+          </div>
+
+          {/* RIGHT — TEXT (Style demandé) */}
+          <div className="text-side-about" style={{ paddingLeft: '20px' }}>
+            <div style={{ 
+               display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--primary)', 
+               fontSize: '11px', fontWeight: '700', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '25px'
+            }}>
+               <div style={{ width: '32px', height: '2.5px', background: 'var(--primary)', borderRadius: '2px' }} />
+               À Propos de Nous
+            </div>
+
+            <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', marginBottom: '30px', lineHeight: '1.1' }}>
+              Changer des Vies avec <span style={{ color: 'var(--secondary)' }}>la Connaissance</span>
+            </h2>
+
+            <p style={{ fontSize: '1.1rem', color: 'var(--text)', fontWeight: '600', marginBottom: '20px', lineHeight: '1.7' }}>
+              Notre promesse : votre générosité accomplit exactement ce qu'elle est censée faire — transformer des vies.
+            </p>
+
+            <p style={{ fontSize: '1rem', color: 'var(--text-light)', marginBottom: '45px', lineHeight: '1.8' }}>
+              Aujourd'hui, nous travaillons pour apporter l'espoir à des milliers de personnes au Sénégal. Demain, nous créerons de vraies opportunités de développement durable au sein des communautés.
+            </p>
+
+            {/* Statistics Bar (Style demandé) */}
+            <div style={{ display: 'flex', gap: '35px', marginBottom: '50px', borderTop: '1px solid var(--border)', paddingTop: '35px' }}>
+               <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ fontFamily: 'Playfair Display', fontSize: '1.9rem', fontWeight: '900', color: 'var(--text)' }}>
+                     12K<span style={{ color: 'var(--secondary)' }}>+</span>
+                  </span>
+                  <span style={{ fontSize: '11px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: '600' }}>Bénéficiaires</span>
+               </div>
+               <div style={{ width: '1.5px', background: 'var(--border)' }} />
+               <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ fontFamily: 'Playfair Display', fontSize: '1.9rem', fontWeight: '900', color: 'var(--text)' }}>
+                     100<span style={{ color: 'var(--secondary)' }}>+</span>
+                  </span>
+                  <span style={{ fontSize: '11px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: '600' }}>Bénévoles</span>
+               </div>
+               <div style={{ width: '1.5px', background: 'var(--border)' }} />
+               <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ fontFamily: 'Playfair Display', fontSize: '1.9rem', fontWeight: '900', color: 'var(--text)' }}>
+                     95<span style={{ color: 'var(--secondary)' }}>%</span>
+                  </span>
+                  <span style={{ fontSize: '11px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: '600' }}>Impact Social</span>
+               </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '25px', alignItems: 'center', flexWrap: 'wrap' }}>
+               <a href="#contact" className="btn-prestige-red" style={{ 
+                 background: 'var(--secondary)', color: 'white', padding: '16px 36px', 
+                 borderRadius: '50px', textDecoration: 'none', fontWeight: '700', fontSize: '13px' 
+               }}>
+                  EN SAVOIR PLUS →
+               </a>
+               <div style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer' }} className="video-trigger">
+                  <div style={{ 
+                     width: '50px', height: '50px', background: 'var(--primary)', 
+                     borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                     boxShadow: '0 8px 20px rgba(42, 122, 75, 0.3)'
+                  }}>
+                     <svg viewBox="0 0 16 16" width="16" height="16" fill="white"><polygon points="5,3 13,8 5,13"/></svg>
+                  </div>
+                  <span style={{ fontWeight: '700', fontSize: '14px', letterSpacing: '1px' }}>VOIR LA VIDÉO</span>
+               </div>
+            </div>
           </div>
 
         </div>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        .btn-luxury-sm:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(27, 67, 50, 0.2); filter: brightness(1.1); }
-        
-        /* FIX MOBILE POUR LES FRAGMENTS */
-        @media (max-width: 768px) {
-           .split-mask-container { 
-             height: 400px !important; 
-             transform: rotate(-3deg) scale(0.9) !important;
-             margin-bottom: 40px;
-           }
-           .split-mask-container > div {
-             height: 250px !important; 
-           }
-           .split-mask-container > div:nth-child(2) {
-             height: 320px !important;
-             margin-top: -20px !important;
-           }
-           .split-mask-container > div:nth-child(3) {
-             height: 280px !important;
-             margin-top: 40px !important;
-           }
-        }
+        @keyframes spinAbout { from {transform: translate(-50%, -50%) rotate(0deg);} to {transform: translate(-50%, -50%) rotate(360deg);} }
+        .acc { position: absolute; border-radius: 50%; width: 12px; height: 12px; animation: floatAbout 4s ease-in-out infinite; }
+        .acc.r1 { background: var(--secondary); top: 10%; right: 10%; }
+        .acc.g1 { background: var(--primary); bottom: 15%; left: 8%; animation: floatAbout 5s ease-in-out infinite 1s; }
+        .acc.outline { width: 22px; height: 22px; border: 2.5px solid var(--primary); background: transparent; top: 15%; left: 30%; animation: floatAbout 6s ease-in-out infinite 2.5s; }
+        @keyframes floatAbout { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+        .video-trigger:hover div { transform: scale(1.1); transition: 0.3s; }
+        @media (max-width: 768px) { h2 { font-size: 2.5rem !important; } .container { padding: 40px 20px; } }
       `}} />
     </section>
   );
