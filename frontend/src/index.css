@@ -15,6 +15,13 @@
   --header-height: 100px;
 }
 
+html, body {
+  overflow-x: hidden; /* Empêche le décalage à droite */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text);

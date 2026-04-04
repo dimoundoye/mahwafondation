@@ -9,7 +9,7 @@ const About = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '100px', alignItems: 'center' }}>
           
           {/* LE SPLIT MASK EFFECT (CORRIGÉ & SHARP) */}
-          <div style={{ 
+          <div className="split-mask-container" style={{ 
             position: 'relative', 
             height: '650px', 
             display: 'flex', 
@@ -115,6 +115,26 @@ const About = () => {
 
       <style dangerouslySetInnerHTML={{ __html: `
         .btn-luxury-sm:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(27, 67, 50, 0.2); filter: brightness(1.1); }
+        
+        /* FIX MOBILE POUR LES FRAGMENTS */
+        @media (max-width: 768px) {
+           .split-mask-container { 
+             height: 400px !important; 
+             transform: rotate(-3deg) scale(0.9) !important;
+             margin-bottom: 40px;
+           }
+           .split-mask-container > div {
+             height: 250px !important; 
+           }
+           .split-mask-container > div:nth-child(2) {
+             height: 320px !important;
+             margin-top: -20px !important;
+           }
+           .split-mask-container > div:nth-child(3) {
+             height: 280px !important;
+             margin-top: 40px !important;
+           }
+        }
       `}} />
     </section>
   );
