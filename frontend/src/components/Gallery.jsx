@@ -3,111 +3,161 @@ import React, { useState } from 'react';
 const Gallery = () => {
   const albums = [
     {
+      id: 1,
       title: "Ramadan Solidaire 2024",
+      cover: '/hero.png',
+      description: "Distribution de Ndogou et repas de rupture dans les quartiers de Dakar.",
       photos: [
-        { src: '/hero.png', alt: 'Distribution Ndogou' },
-        { src: '/group.png', alt: 'Équipe Bénévole' },
-        { src: '/action_march.png', alt: 'Repas partagé' },
+        { src: '/hero.png', alt: 'Distribution Ndogou 1' },
+        { src: '/group.png', alt: 'Équipe en action' },
+        { src: '/action_march.png', alt: 'Repas de rupture' },
+        { src: '/hero.png', alt: 'Moment de joie' },
       ]
     },
     {
-      title: "Impact Éducation & Jeunesse",
+      id: 2,
+      title: "Actions Éducation",
+      cover: '/action_march.png',
+      description: "Soutien aux écoles et distribution de kits scolaires pour les talibés.",
       photos: [
-        { src: '/action_march.png', alt: 'Fournitures scolaires' },
-        { src: '/hero.png', alt: 'Sourires d\'enfants' },
+        { src: '/action_march.png', alt: 'Kits scolaires' },
+        { src: '/hero.png', alt: 'Classe de cours' },
+        { src: '/group.png', alt: 'Remise des prix' },
+      ]
+    },
+    {
+      id: 3,
+      title: "Événements Spéciaux",
+      cover: '/group.png',
+      description: "Moments forts de nos rassemblements et journées de bénévolat.",
+      photos: [
+        { src: '/group.png', alt: 'Photo de groupe 2024' },
+        { src: '/action_march.png', alt: 'Conférence' },
       ]
     }
   ];
 
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
   const [selectedImg, setSelectedImg] = useState(null);
 
+  // Vue Initiale : Grille des Albums (Couvertures)
+  const renderAlbumCovers = () => (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+      {albums.map((album) => (
+        <div 
+          key={album.id}
+          onClick={() => setSelectedAlbum(album)}
+          style={{
+            background: 'white',
+            borderRadius: '25px',
+            overflow: 'hidden',
+            cursor: 'pointer',
+            boxShadow: '0 15px 40px rgba(0,0,0,0.05)',
+            transition: 'all 0.4s ease',
+            border: '1px solid var(--border)'
+          }}
+          className="album-card"
+        >
+          {/* Cover Image */}
+          <div style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+             <img 
+               src={album.cover} 
+               alt={album.title} 
+               style={{ width: '100%', height: '100%', objectFit: 'cover', transition: '0.6s' }} 
+             />
+             <div style={{
+                position: 'absolute', bottom: '15px', right: '15px',
+                background: 'var(--secondary)', color: 'white', padding: '6px 15px',
+                borderRadius: '50px', fontSize: '11px', fontWeight: '800'
+             }}>
+                {album.photos.length} PHOTOS
+             </div>
+          </div>
+          {/* Info */}
+          <div style={{ padding: '30px' }}>
+             <h3 style={{ fontFamily: 'Playfair Display', fontSize: '1.6rem', marginBottom: '10px' }}>{album.title}</h3>
+             <p style={{ color: 'var(--text-light)', fontSize: '0.9rem', lineHeight: '1.6' }}>{album.description}</p>
+             <div style={{ marginTop: '20px', color: 'var(--primary)', fontWeight: '800', fontSize: '11px', letterSpacing: '1px' }}>
+                VOIR L'ALBUM →
+             </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // Vue Album Ouvert : Grille des Photos du scroll spécifique
+  const renderAlbumPhotos = () => (
+    <div>
+      {/* Bouton Retour */}
+      <button 
+        onClick={() => setSelectedAlbum(null)}
+        style={{
+          background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center',
+          gap: '10px', color: 'var(--primary)', fontWeight: '800', fontSize: '12px', marginBottom: '40px',
+          padding: '10px 0'
+        }}
+      >
+        ← RETOUR AUX ALBUMS
+      </button>
+
+      <div style={{ marginBottom: '50px' }}>
+         <h3 style={{ fontFamily: 'Playfair Display', fontSize: '3rem', marginBottom: '10px' }}>{selectedAlbum.title}</h3>
+         <p style={{ color: 'var(--text-light)', maxWidth: '600px' }}>{selectedAlbum.description}</p>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+        {selectedAlbum.photos.map((img, i) => (
+          <div
+            key={i}
+            onClick={() => setSelectedImg(img)}
+            style={{
+              borderRadius: '20px', overflow: 'hidden', aspectRatio: '3/2', cursor: 'pointer',
+              boxShadow: 'var(--shadow)', border: '1px solid var(--border)'
+            }}
+            className="photo-card"
+          >
+            <img 
+              src={img.src} 
+              alt={img.alt} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', transition: '0.4s' }} 
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <section id="gallery" style={{ padding: '120px 0', background: 'transparent' }}>
+    <section id="gallery" style={{ padding: '80px 0 120px', background: 'transparent' }}>
       <div className="container">
         
-        {/* Gallery Header */}
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <div style={{ 
-               display: 'inline-flex', alignItems: 'center', gap: '12px', color: 'var(--primary)', 
-               fontSize: '11px', fontWeight: '800', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '25px'
-          }}>
-             <div style={{ width: '28px', height: '2.5px', background: 'var(--primary)', borderRadius: '2px' }} />
-             GALERIE PHOTOS
-          </div>
-          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--text)' }}>Nos Moments Forts</h2>
-        </div>
-
-        {/* ALBUMS LIST */}
-        <div style={{ display: 'grid', gap: '80px' }}>
-          {albums.map((album, albumIdx) => (
-            <div key={albumIdx} className="album-group">
+        {/* Header - Uniquement visible si aucun album n'est sélectionné */}
+        {!selectedAlbum && (
+           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
               <div style={{ 
-                display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '30px',
-                borderBottom: '1px solid var(--border)', paddingBottom: '15px'
+                  display: 'inline-flex', alignItems: 'center', gap: '12px', color: 'var(--primary)', 
+                  fontSize: '11px', fontWeight: '800', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '25px'
               }}>
-                 <span style={{ 
-                   fontFamily: 'Playfair Display', fontSize: '1.8rem', fontWeight: '900', 
-                   color: 'var(--primary)' 
-                 }}>
-                   {album.title}
-                 </span>
-                 <div style={{ padding: '4px 12px', background: 'var(--secondary)', color: 'white', fontSize: '10px', borderRadius: '50px', fontWeight: '800' }}>
-                    {album.photos.length} PHOTOS
-                 </div>
+                <div style={{ width: '28px', height: '2.5px', background: 'var(--primary)', borderRadius: '2px' }} />
+                MULTIMÉDIA
               </div>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)' }}>Archives de Solidarité</h2>
+           </div>
+        )}
 
-              {/* Grid for this specific album */}
-              <div style={{ 
-                display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-                gap: '20px' 
-              }}>
-                {album.photos.map((img, i) => (
-                  <div
-                    key={i}
-                    onClick={() => setSelectedImg(img)}
-                    style={{
-                      position: 'relative',
-                      borderRadius: '0',
-                      overflow: 'hidden',
-                      aspectRatio: '3/2',
-                      cursor: 'pointer',
-                      border: '1px solid var(--border)',
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-                      transition: 'all 0.4s'
-                    }}
-                    className="gallery-item-album"
-                  >
-                    <img 
-                      src={img.src} 
-                      alt={img.alt} 
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', transition: '0.6s' }} 
-                    />
-                    <div className="overlay-album" style={{
-                      position: 'absolute', inset: 0, 
-                      background: 'linear-gradient(to top, rgba(27,67,50,0.8), transparent)',
-                      display: 'flex', alignItems: 'flex-end', padding: '20px',
-                      opacity: 0, transition: '0.4s'
-                    }}>
-                      <div style={{ color: 'white', fontWeight: '700', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        AGRANDIR
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* CONTENU DYNAMIQUE */}
+        {selectedAlbum ? renderAlbumPhotos() : renderAlbumCovers()}
+
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        .gallery-item-album:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(42, 122, 75, 0.15); border-color: var(--primary); }
-        .gallery-item-album:hover .overlay-album { opacity: 1 !important; }
-        .gallery-item-album:hover img { transform: scale(1.1); }
+        .album-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .album-card:hover img { transform: scale(1.1); }
+        .photo-card:hover img { transform: scale(1.1); }
       `}} />
 
-      {/* Lightbox / Modal */}
+      {/* Lightbox Modal */}
       {selectedImg && (
         <div
           onClick={() => setSelectedImg(null)}
@@ -120,11 +170,8 @@ const Gallery = () => {
           <img
             src={selectedImg.src}
             alt={selectedImg.alt}
-            style={{ maxWidth: '100%', maxHeight: '85%', boxShadow: '0 30px 100px rgba(0,0,0,0.5)', border: '4px solid white' }}
+            style={{ maxWidth: '100%', maxHeight: '85%', border: '4px solid white', boxShadow: '0 30px 100px rgba(0,0,0,0.5)' }}
           />
-          <div style={{ position: 'absolute', bottom: '40px', color: 'white', fontWeight: '800', letterSpacing: '2px', textTransform: 'uppercase' }}>
-            {selectedImg.alt}
-          </div>
         </div>
       )}
     </section>

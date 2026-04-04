@@ -120,10 +120,18 @@ const Navbar = () => {
          transition: 'transform 0.4s cubic-bezier(0.77,0,0.175,1)',
          display: 'flex', flexDirection: 'column', gap: '30px'
       }}>
+         {/* Bouton Fermer (X) explicite */}
+         <button 
+           onClick={() => setMobileMenuOpen(false)}
+           style={{ position: 'absolute', top: '30px', right: '30px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text)' }}
+         >
+           <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" strokeWidth="2.5" fill="none"><path d="M18 6L6 18M6 6l12 12" /></svg>
+         </button>
+
          {navLinks.map((link) => (
             <a 
               key={link.name} href={link.href} onClick={handleLinkClick}
-              style={{ fontSize: '2rem', fontWeight: '900', color: 'var(--text)', textDecoration: 'none', fontFamily: 'Playfair Display' }}
+              style={{ fontSize: '2.2rem', fontWeight: '900', color: 'var(--text)', textDecoration: 'none', fontFamily: 'Playfair Display' }}
             >
                {link.name}
             </a>

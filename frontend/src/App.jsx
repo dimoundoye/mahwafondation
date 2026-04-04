@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Causes from './components/Causes'; // Nouveau composant
 import Gallery from './components/Gallery';
+import InstantsDePartage from './components/InstantsDePartage';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -16,6 +17,7 @@ function App() {
         <Hero />
         <About />
         <Causes /> {/* À la place d'Actions */}
+        <InstantsDePartage />
         <Gallery />
         <Contact />
     </main>

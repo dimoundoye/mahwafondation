@@ -16,7 +16,7 @@ const About = () => {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
           gap: '80px', 
           alignItems: 'center' 
         }}>
@@ -61,15 +61,6 @@ const About = () => {
                border: '6px solid white', boxShadow: '0 20px 60px rgba(0,0,0,0.15)'
             }}>
                <img src="/group.png" alt="Mahwa Group" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-               <div style={{
-                  position: 'absolute', top: '20px', right: '20px', width: '80px', height: '80px',
-                  background: 'var(--secondary)', borderRadius: '50%', display: 'flex', flexDirection: 'column',
-                  alignItems: 'center', justifyContent: 'center', color: 'white', fontFamily: 'Playfair Display',
-                  boxShadow: '0 5px 15px rgba(215, 38, 56, 0.4)'
-               }}>
-                  <span style={{ fontSize: '1.3rem', fontWeight: '900', lineHeight: 1 }}>03+</span>
-                  <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>Années</span>
-               </div>
             </div>
 
             {/* Small circular images */}
@@ -112,23 +103,35 @@ const About = () => {
               Aujourd'hui, nous travaillons pour apporter l'espoir à des milliers de personnes au Sénégal. Demain, nous créerons de vraies opportunités de développement durable au sein des communautés.
             </p>
 
-            {/* Statistics Bar (Style demandé) */}
-            <div style={{ display: 'flex', gap: '35px', marginBottom: '50px', borderTop: '1px solid var(--border)', paddingTop: '35px' }}>
-               <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {/* Statistics Bar (REMPLACÉ PAR UN WRAP POUR MOBILE) */}
+            <div style={{ 
+               display: 'flex', 
+               flexWrap: 'wrap', 
+               gap: '20px', 
+               marginBottom: '50px', 
+               borderTop: '1px solid var(--border)', 
+               paddingTop: '35px' 
+            }} className="stats-bar-about">
+               
+               <div style={{ display: 'flex', flexDirection: 'column', minWidth: '100px' }}>
                   <span style={{ fontFamily: 'Playfair Display', fontSize: '1.9rem', fontWeight: '900', color: 'var(--text)' }}>
                      12K<span style={{ color: 'var(--secondary)' }}>+</span>
                   </span>
                   <span style={{ fontSize: '11px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: '600' }}>Bénéficiaires</span>
                </div>
-               <div style={{ width: '1.5px', background: 'var(--border)' }} />
-               <div style={{ display: 'flex', flexDirection: 'column' }}>
+               
+               <div className="stat-divider-about" style={{ width: '1.5px', background: 'var(--border)' }} />
+               
+               <div style={{ display: 'flex', flexDirection: 'column', minWidth: '100px' }}>
                   <span style={{ fontFamily: 'Playfair Display', fontSize: '1.9rem', fontWeight: '900', color: 'var(--text)' }}>
                      100<span style={{ color: 'var(--secondary)' }}>+</span>
                   </span>
                   <span style={{ fontSize: '11px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: '600' }}>Bénévoles</span>
                </div>
-               <div style={{ width: '1.5px', background: 'var(--border)' }} />
-               <div style={{ display: 'flex', flexDirection: 'column' }}>
+               
+               <div className="stat-divider-about" style={{ width: '1.5px', background: 'var(--border)' }} />
+               
+               <div style={{ display: 'flex', flexDirection: 'column', minWidth: '100px' }}>
                   <span style={{ fontFamily: 'Playfair Display', fontSize: '1.9rem', fontWeight: '900', color: 'var(--text)' }}>
                      95<span style={{ color: 'var(--secondary)' }}>%</span>
                   </span>
@@ -136,7 +139,7 @@ const About = () => {
                </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '25px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }} className="about-cta-group">
                <a href="#contact" className="btn-prestige-red" style={{ 
                  background: 'var(--secondary)', color: 'white', padding: '16px 36px', 
                  borderRadius: '50px', textDecoration: 'none', fontWeight: '700', fontSize: '13px' 
@@ -162,12 +165,19 @@ const About = () => {
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes spinAbout { from {transform: translate(-50%, -50%) rotate(0deg);} to {transform: translate(-50%, -50%) rotate(360deg);} }
         .acc { position: absolute; border-radius: 50%; width: 12px; height: 12px; animation: floatAbout 4s ease-in-out infinite; }
-        .acc.r1 { background: var(--secondary); top: 10%; right: 10%; }
         .acc.g1 { background: var(--primary); bottom: 15%; left: 8%; animation: floatAbout 5s ease-in-out infinite 1s; }
         .acc.outline { width: 22px; height: 22px; border: 2.5px solid var(--primary); background: transparent; top: 15%; left: 30%; animation: floatAbout 6s ease-in-out infinite 2.5s; }
         @keyframes floatAbout { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
         .video-trigger:hover div { transform: scale(1.1); transition: 0.3s; }
-        @media (max-width: 768px) { h2 { font-size: 2.5rem !important; } .container { padding: 40px 20px; } }
+        @media (max-width: 768px) { 
+           h2 { font-size: 2.2rem !important; } 
+           .container { padding: 40px 20px; } 
+           .dot-grid { display: none !important; } /* Empêche le débordement horizontal */
+           .image-cluster { max-width: 320px !important; margin: 0 auto 40px !important; }
+           .stat-divider-about { display: none !important; }
+           .stats-bar-about { justify-content: center; gap: 30px !important; }
+           .about-cta-group { justify-content: center; }
+        }
       `}} />
     </section>
   );
