@@ -32,20 +32,22 @@ const Causes = () => {
   ];
 
   return (
-    <section id="actions" style={{ padding: '120px 0', background: 'var(--bg)' }}>
+    <section id="actions" style={{ padding: '120px 0', background: 'transparent' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }} className="causes-header">
           <div style={{ 
                display: 'inline-flex', alignItems: 'center', gap: '12px', color: 'var(--primary)', 
-               fontSize: '11px', fontWeight: '700', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '25px'
+               fontSize: '11px', fontWeight: '800', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '25px'
           }}>
              <div style={{ width: '28px', height: '2.5px', background: 'var(--primary)', borderRadius: '2px' }} />
              NOS CAUSES
           </div>
-          <h2 style={{ fontSize: '3.5rem', marginTop: '10px' }}>Engagement Solidaire</h2>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.8rem)', marginTop: '5px' }}>Engagement Solidaire</h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px' }}>
+        <div style={{ 
+           display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' 
+        }} className="causes-grid">
           {causes.map((c, i) => (
             <div 
               key={i} 
@@ -64,36 +66,35 @@ const Causes = () => {
                 background: i === 0 ? 'url(/hero.png)' : i === 1 ? 'url(/action_march.png)' : 'url(/group.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
-              }} />
+              }} className="cause-card-img" />
               
-              <div style={{ padding: '40px' }}>
+              <div style={{ padding: '35px' }} className="cause-card-body">
                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: c.color, marginBottom: '20px' }}>
                     {c.icon}
-                    <h3 style={{ fontSize: '1.6rem', color: 'var(--text)', margin: 0 }}>{c.title}</h3>
+                    <h3 style={{ fontSize: '1.5rem', color: 'var(--text)', margin: 0 }}>{c.title}</h3>
                  </div>
-                 <p style={{ color: 'var(--text-light)', fontSize: '1rem', marginBottom: '30px', lineHeight: '1.8' }}>
+                 <p style={{ color: 'var(--text-light)', fontSize: '0.95rem', marginBottom: '30px', lineHeight: '1.7' }}>
                     {c.desc}
                  </p>
 
-                 {/* Progress Bar styled like Charity Style */}
                  <div style={{ marginBottom: '30px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '10px', fontWeight: '700', letterSpacing: '1px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', marginBottom: '10px', fontWeight: '800', letterSpacing: '1px' }}>
                        <span style={{ color: 'var(--text-light)', textTransform: 'uppercase' }}>ATTEINT:</span>
                        <span style={{ color: c.color }}>{c.percent}%</span>
                     </div>
-                    <div style={{ height: '8px', background: '#F0F0F0', borderRadius: '50px', overflow: 'hidden' }}>
+                    <div style={{ height: '7px', background: '#F0F0F0', borderRadius: '50px', overflow: 'hidden' }}>
                        <div style={{ width: `${c.percent}%`, height: '100%', background: c.color, transition: 'width 1s ease' }} />
                     </div>
                  </div>
 
                  <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1.5px dashed var(--border)', paddingTop: '25px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                       <span style={{ fontSize: '10px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Collecté</span>
-                       <span style={{ fontWeight: '900', fontSize: '1.2rem', fontFamily: 'Playfair Display', color: 'var(--text)' }}>{c.raised}</span>
+                       <span style={{ fontSize: '9px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Collecté</span>
+                       <span style={{ fontWeight: '900', fontSize: '1.1rem', fontFamily: 'Playfair Display', color: 'var(--text)' }}>{c.raised}</span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}>
-                       <span style={{ fontSize: '10px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Objectif</span>
-                       <span style={{ fontWeight: '900', fontSize: '1.2rem', fontFamily: 'Playfair Display', color: 'var(--text)' }}>{c.goal}</span>
+                       <span style={{ fontSize: '9px', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Objectif</span>
+                       <span style={{ fontWeight: '900', fontSize: '1.1rem', fontFamily: 'Playfair Display', color: 'var(--text)' }}>{c.goal}</span>
                     </div>
                  </div>
               </div>
@@ -104,6 +105,13 @@ const Causes = () => {
       
       <style dangerouslySetInnerHTML={{ __html: `
         .cause-card:hover { transform: translateY(-12px); box-shadow: 0 40px 80px rgba(0,0,0,0.1); }
+        @media (max-width: 600px) {
+           .causes-header h2 { font-size: 2.2rem !important; }
+           #actions { padding: 80px 0 !important; }
+           .causes-grid { grid-template-columns: 1fr !important; }
+           .cause-card-body { padding: 30px !important; }
+           .cause-card { border-radius: 20px !important; }
+        }
       `}} />
     </section>
   );

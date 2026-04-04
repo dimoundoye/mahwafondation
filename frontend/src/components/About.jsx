@@ -10,21 +10,9 @@ const About = () => {
       justifyContent: 'center', 
       overflow: 'hidden',
       padding: '120px 0',
-      background: 'var(--bg)'
+      background: 'transparent' // On enlève le fond local
     }}>
       
-      {/* BACKGROUND DECORATION MAP */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.08 }}>
-        <svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="200" cy="260" rx="160" ry="200" fill="var(--primary)"/>
-          <ellipse cx="380" cy="200" rx="80"  ry="120" fill="var(--primary)"/>
-          <ellipse cx="580" cy="240" rx="180" ry="170" fill="var(--primary)"/>
-          <ellipse cx="840" cy="220" rx="200" ry="150" fill="var(--primary)"/>
-          <ellipse cx="1060" cy="240" rx="100" ry="130" fill="var(--primary)"/>
-          <ellipse cx="300" cy="380" rx="120" ry="80"  fill="var(--primary)"/>
-        </svg>
-      </div>
-
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ 
           display: 'grid', 
