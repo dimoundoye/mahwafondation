@@ -1,0 +1,130 @@
+.section {
+  position: relative;
+  padding-block: var(--section);
+  background: var(--paper);
+}
+
+.sticky {
+  position: relative;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 0.6rem + 1.6vw, 2.25rem);
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.intro {
+  flex: 0 0 min(84vw, 31rem);
+  display: grid;
+  gap: 1.1rem;
+  align-content: center;
+  padding-right: clamp(1rem, 0.5rem + 3vw, 4rem);
+  scroll-snap-align: start;
+}
+
+.title {
+  font-size: var(--step-4);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.text {
+  color: var(--ink-2);
+}
+
+.card {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.portrait .frame {
+  width: min(70vw, 22rem);
+  aspect-ratio: 3 / 4;
+}
+
+.landscape .frame {
+  width: min(85vw, 38rem);
+  aspect-ratio: 3 / 2;
+}
+
+.caption {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 22rem;
+  margin-top: 0.9rem;
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+
+.count {
+  font-weight: 600;
+  color: var(--green);
+}
+
+/* Version épinglée (grand écran) */
+.pinned {
+  padding-block: 0;
+}
+
+.pinned .sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pinned .track {
+  width: max-content;
+  overflow: visible;
+  padding-inline: var(--gutter) 12vw;
+  scroll-snap-type: none;
+  will-change: transform;
+}
+
+.pinned .portrait .frame {
+  width: auto;
+  height: min(70vh, 40rem);
+}
+
+.pinned .landscape .frame {
+  width: auto;
+  height: min(56vh, 32rem);
+}
+
+.pinned .offset {
+  transform: translateY(5vh);
+}
+
+.progress {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 2.5rem;
+  height: 1px;
+  background: var(--line);
+}
+
+.progressFill {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform-origin: left;
+}

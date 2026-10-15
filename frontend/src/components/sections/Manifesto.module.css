@@ -1,0 +1,44 @@
+.section {
+  padding-block: var(--section);
+}
+
+.statement {
+  max-width: 23em;
+  margin-top: clamp(1.25rem, 1rem + 1vw, 2rem);
+  font-size: clamp(1.75rem, 1.25rem + 2.3vw, 3.3rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: pretty;
+}
+
+.columns {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: var(--block);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.column {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 26rem;
+  color: var(--ink-2);
+}
+
+.columnTitle {
+  font-size: var(--step-2);
+  color: var(--ink);
+}
+
+.cta {
+  align-self: end;
+}
+
+@media (min-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr 1fr auto;
+    gap: var(--gutter);
+  }
+}

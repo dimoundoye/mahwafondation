@@ -1,0 +1,277 @@
+/* Histoire */
+.story {
+  padding-block: var(--section);
+}
+
+.storyGrid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.25rem;
+}
+
+.storyBody {
+  display: grid;
+  align-content: center;
+  gap: 1.5rem;
+}
+
+.storyLead {
+  max-width: 24em;
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.storyText {
+  display: grid;
+  gap: 1rem;
+  max-width: 36rem;
+  color: var(--ink-2);
+}
+
+.storyPhotos {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: start;
+  gap: clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
+}
+
+.storyPhotoB {
+  margin-top: 22%;
+}
+
+/* En-têtes de section */
+.sectionHead {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: var(--block);
+}
+
+.sectionTitle {
+  font-size: var(--step-5);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* Valeurs */
+.values {
+  padding-block: var(--section);
+  background: var(--paper);
+}
+
+.valueGrid {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.value {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  padding: 1.5rem 0 1.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.valueIndex {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--green);
+}
+
+.valueTitle {
+  font-size: var(--step-2);
+  letter-spacing: -0.035em;
+}
+
+.valueText {
+  max-width: 22rem;
+  color: var(--ink-2);
+}
+
+/* Méthode */
+.method {
+  padding-block: var(--section);
+}
+
+.methodVisual {
+  display: none;
+}
+
+.steps {
+  display: grid;
+  gap: 2.25rem;
+}
+
+.step {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.stepIndex {
+  font-size: var(--step--2);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.stepTitle {
+  font-size: var(--step-3);
+  letter-spacing: -0.04em;
+}
+
+.stepText {
+  max-width: 28rem;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.stepPhoto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+/* Bénévoles */
+.volunteers {
+  padding-block: var(--section);
+  background: var(--paper);
+}
+
+.volunteersHead {
+  align-items: end;
+}
+
+.volunteersTitle {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.volunteersText {
+  max-width: 26rem;
+  color: var(--ink-2);
+}
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: clamp(8rem, 5rem + 9vw, 13rem);
+  gap: clamp(0.6rem, 0.4rem + 0.8vw, 1.1rem);
+}
+
+.mosaicItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.mosaicItem > span {
+  transition: transform 1.2s var(--ease-out);
+}
+
+.mosaicItem:nth-child(1),
+.mosaicItem:nth-child(6) {
+  grid-row: span 2;
+}
+
+@media (hover: hover) {
+  .mosaicItem:hover > span {
+    transform: scale(1.06);
+  }
+}
+
+@media (min-width: 900px) {
+  .storyGrid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: var(--gutter);
+  }
+
+  .volunteersHead {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--gutter);
+  }
+
+  .volunteersText {
+    justify-self: end;
+  }
+
+  .valueGrid {
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .value {
+    padding: 1.75rem 2rem 2rem 0;
+    border-bottom: 0;
+  }
+
+  .value + .value {
+    padding-left: 2rem;
+    border-left: 1px solid var(--line);
+  }
+
+  .mosaic {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .methodGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 1.5rem + 3vw, 4.5rem);
+  }
+
+  .methodVisual {
+    display: block;
+    position: sticky;
+    top: calc(var(--nav-height) + 2rem);
+    align-self: start;
+    height: min(calc(100vh - var(--nav-height) - 5rem), 38rem);
+  }
+
+  .methodFrame {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background: var(--ivory-deep);
+  }
+
+  .methodSlide {
+    position: absolute;
+    inset: 0;
+  }
+
+  .methodCounter {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1.25rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    background: var(--ivory);
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .methodCounter span {
+    color: var(--ink-3);
+  }
+
+  .steps {
+    gap: 0;
+  }
+
+  .step {
+    min-height: min(38vh, 22rem);
+    align-content: center;
+    border-top: 1px solid var(--line);
+  }
+
+  .stepPhoto {
+    display: none;
+  }
+}

@@ -1,0 +1,43 @@
+.shell {
+  position: relative;
+}
+
+.content {
+  position: relative;
+}
+
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: grid;
+  place-items: center;
+  background: var(--green-deep);
+  pointer-events: none;
+  will-change: clip-path;
+}
+
+.mark {
+  display: grid;
+  justify-items: center;
+  gap: 1.1rem;
+}
+
+.markImage {
+  width: auto;
+  height: clamp(3.5rem, 2.5rem + 4vw, 5.5rem);
+}
+
+.markWord {
+  display: flex;
+  overflow: hidden;
+  font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--ivory);
+}
+
+.markWord span {
+  display: inline-block;
+}

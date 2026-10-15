@@ -1,29 +1,33 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Causes from './components/Causes'; // Nouveau composant
-import Gallery from './components/Gallery';
-import InstantsDePartage from './components/InstantsDePartage';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SmoothScroll from './components/layout/SmoothScroll';
+import SiteLayout from './components/layout/SiteLayout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Actions from './pages/Actions';
+import Gallery from './pages/Gallery';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Causes /> {/* À la place d'Actions */}
-        <InstantsDePartage />
-        <Gallery />
-        <Contact />
-    </main>
-    <Footer />
-      <WhatsAppButton />
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          element={
+            <SmoothScroll>
+              <SiteLayout />
+            </SmoothScroll>
+          }
+        >
+          <Route index element={<Home />} />
+          <Route path="a-propos" element={<About />} />
+          <Route path="actions" element={<Actions />} />
+          <Route path="galerie" element={<Gallery />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

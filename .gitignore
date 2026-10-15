@@ -1,0 +1,35 @@
+# Dépendances
+node_modules/
+
+# Builds
+dist/
+dist-ssr/
+build/
+coverage/
+
+# Variables d'environnement et secrets (garder uniquement les modèles)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Éditeurs et système
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Fichiers locaux de Claude Code (sessions, worktrees)
+.claude/worktrees/
+.claude/settings.local.json

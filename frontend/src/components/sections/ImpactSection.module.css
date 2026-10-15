@@ -1,0 +1,55 @@
+.section {
+  padding-block: var(--section);
+  background: var(--green-deep);
+  color: var(--on-dark);
+}
+
+.head {
+  display: grid;
+  gap: 1.25rem;
+  align-items: end;
+  margin-bottom: var(--block);
+}
+
+.headMain {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.title {
+  font-size: var(--step-6);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.title em {
+  color: var(--green-tint);
+}
+
+.text {
+  max-width: 26rem;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--on-dark-2);
+}
+
+.photo {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .head {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--gutter);
+  }
+
+  .text {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 767px) {
+  .photo {
+    aspect-ratio: 4 / 3 !important;
+  }
+}

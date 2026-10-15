@@ -1,0 +1,60 @@
+/* Design tokens — direction « éditorial chaleureux » */
+:root {
+  /* Couleurs de marque (relevées sur le logo) */
+  --green: #356d3c;
+  --green-ink: #26522c;
+  --green-deep: #13301b;
+  --green-night: #0d2213;
+  --green-tint: #dde6d5;
+  --green-light: #93d19c;
+  --red: #9b0103;
+
+  /* Neutres chauds */
+  --ivory: #f4efe6;
+  --ivory-deep: #ebe3d5;
+  --paper: #fbf8f2;
+  --ink: #16140f;
+  --ink-2: #3f3b33;
+  --ink-3: #6e685d;
+  --line: rgba(22, 20, 15, 0.14);
+  --line-strong: rgba(22, 20, 15, 0.32);
+
+  /* Sur fond sombre */
+  --on-dark: #f4efe6;
+  --on-dark-2: rgba(244, 239, 230, 0.72);
+  --on-dark-3: rgba(244, 239, 230, 0.5);
+  --on-dark-line: rgba(244, 239, 230, 0.16);
+
+  /* Typographie : une seule famille (Inter Tight), la hiérarchie se fait par la taille et la graisse */
+  --font-sans: 'Inter Tight Variable', 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --weight-heading: 600;
+
+  --step--2: clamp(0.72rem, 0.7rem + 0.08vw, 0.78rem);
+  --step--1: clamp(0.84rem, 0.81rem + 0.12vw, 0.92rem);
+  --step-0: clamp(1rem, 0.96rem + 0.18vw, 1.12rem);
+  --step-1: clamp(1.14rem, 1.08rem + 0.32vw, 1.34rem);
+  --step-2: clamp(1.35rem, 1.2rem + 0.7vw, 1.8rem);
+  --step-3: clamp(1.7rem, 1.4rem + 1.4vw, 2.6rem);
+  --step-4: clamp(2.05rem, 1.6rem + 2.2vw, 3.5rem);
+  --step-5: clamp(2.4rem, 1.7rem + 3.4vw, 4.8rem);
+  --step-6: clamp(2.8rem, 1.6rem + 5.4vw, 6.6rem);
+
+  /* Espacements & grille */
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 2.75rem);
+  --section: clamp(3.75rem, 2.4rem + 4.2vw, 7rem);
+  --block: clamp(2rem, 1.5rem + 1.8vw, 3.25rem);
+  --max-width: 1520px;
+  --nav-height: 5.25rem;
+  --radius-sm: 6px;
+  --radius: 14px;
+  --radius-lg: 28px;
+
+  /* Mouvement */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Profondeur */
+  --shadow-soft: 0 1px 2px rgba(22, 20, 15, 0.04), 0 12px 32px -12px rgba(22, 20, 15, 0.18);
+  --shadow-lift: 0 2px 6px rgba(22, 20, 15, 0.06), 0 30px 60px -24px rgba(22, 20, 15, 0.32);
+}
